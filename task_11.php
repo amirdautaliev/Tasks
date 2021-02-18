@@ -1,5 +1,5 @@
 <?php 
-var_dump($_FILES);
+
 $name_file = trim(mb_strtolower($_FILES['file']['name']));
 $tmp_name = $_FILES['file']['tmp_name'];
 if(!file_exists('img')){
@@ -15,20 +15,19 @@ if (file_exists($filename) && !empty($_FILES)){
  ?>
 
 <html>
-<form action="save_11.php" method="POST">
+ <form action="save_11.php" enctype="multipart/form-data" method="post">
+  
                                  <fieldset>
  <legend>информация</legend>
- <label>Имя<input type="text" required></label>
- <label>E-mail<input type="email" required></label>
+ <label>Имя<input type="username" name='username'></label>
+ <label>E-mail<input type="email"name='email' ></label>
+ <label> Отправить файл <input type="file" name='file'></label>
+ <label><input type="submit" value='Отправить'></label>
  </fieldset>
- </form>
- <form action="#" enctype="multipart/form-data" method="POST">
-  <input type="file" name='fille'>
-  <input type="submit" value='enter'>
+
+
+
   </form>
 
 
 </html>
-</html>
-
-
