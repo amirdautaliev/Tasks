@@ -1,14 +1,16 @@
 <?php 
+require  'uploads.php';
 $username = $_POST['username'];
 $email =$_POST['email'];
-$img = $_FILES ['img'];
-$tmp_name = $_FILES['img'];
-
+$imagetmp = $_FILES ['image']['tmp_name'];
+$imagename = $_FILES['image']['name'];
+$path = 'uploads/';
+$filedir = $path.$imagetmp;
 $pdo = new PDO ("mysql:host=localhost;dbname=my_study;","mysql","mysql");
-$sql= "INSERT INTO task (username,email,img) VALUES (:username,:email)";
+$sql= "INSERT INTO task (username,email,image_path) VALUES (:username, :email, :image_path)";
 $statement = $pdo->prepare($sql);
-$statement -> execute(['username'=>$username,'email'=>$email]);
-$connection->query('INSERT INTO task VALUES ('$img''));
-//header('Location: task_11.php');
+$statement -> execute(['username'=>$username,'email'=>$email,'image_path'=>$filedir]);
+header('Location: task_11.php');
+move_uploaded_file($imagetmp,$filedir);
 //exit();
  ?>
