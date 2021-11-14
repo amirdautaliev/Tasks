@@ -1,6 +1,5 @@
-<?php 
+<?php   
 session_start();
-
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,24 +62,22 @@ session_start();
                             </div>
                             <div class="col-xl-6 ml-auto mr-auto">
                                 <div class="card p-4 rounded-plus bg-faded">
-                                    <?php if(isset($_SESSION["danger"])): ?>
+                                    <?php  if(isset($_SESSION["danger"])): ?>
                                     <div class="alert alert-danger text-dark" role="alert">
-                                       <?php echo $_SESSION["danger"]; 
-                                        unset($_SESSION["danger"]);
-                                       ?>
-
+                                            <?php   echo $_SESSION["danger"];
+                                            unset ($_SESSION["danger"]); ?>             
                                     </div>
-                                <?php endif; ?>
-                                    <form id="js-login" novalidate action="registr.php" method="post">
+                                    <?php endif; ?>
+                                    <form id="js-login" novalidate="" method="post" action="obrat.php">
                                         <div class="form-group">
                                             <label class="form-label" for="emailverify">Email</label>
-                                            <input type="email"   id="emailverify" class="form-control" placeholder="Эл. адрес" name="email" required >
+                                            <input type="email" id="emailverify" class="form-control" placeholder="Эл. адрес" name="email" required>
                                             <div class="invalid-feedback">Заполните поле.</div>
                                             <div class="help-block">Эл. адрес будет вашим логином при авторизации</div>
                                         </div>
                                         <div class="form-group">
                                             <label class="form-label" for="userpassword">Пароль <br></label>
-                                            <input type="password"  id="userpassword" class="form-control" placeholder=""  name ="password"required >
+                                            <input type="password" id="userpassword" class="form-control" placeholder="" name="password" required>
                                             <div class="invalid-feedback">Заполните поле.</div>
                                         </div>
                                        

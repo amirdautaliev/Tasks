@@ -12,7 +12,9 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
     <!-- Call App Mode on ios devices -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes"
+
+     />
     <!-- Remove Tap Highlight on Windows Phone IE -->
     <meta name="msapplication-tap-highlight" content="no">
     <!-- base css -->
@@ -31,27 +33,36 @@ session_start();
         <div class="page-logo m-0 w-100 align-items-center justify-content-center rounded border-bottom-left-radius-0 border-bottom-right-radius-0 px-4">
             <a href="javascript:void(0)" class="page-logo-link press-scale-down d-flex align-items-center">
                 <img src="img/logo.png" alt="SmartAdmin WebApp" aria-roledescription="logo">
-                <span class="page-logo-text mr-1">1</span>
+                <span class="page-logo-text mr-1">Учебный проект</span>
                 <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-primary-300"></i>
             </a>
         </div>
         <div class="card p-4 border-top-left-radius-0 border-top-right-radius-0">
-            <?php if (isset($_SESSION["success"])):?>
-            <div class="alert alert-success">
-             <?php echo $_SESSION["success"]; 
-                unset($_SESSION["success"]);
-             ?>
-                   
+
+                 <?php if(isset($_SESSION["success"])): ?>
+         <div class="alert alert-success  text-dark" role="alert">
+                    <?php echo $_SESSION["success"]; 
+                      unset($_SESSION["success"]);
+                    ?>  
             </div>
-        <?php endif; ?>
-            <form action="1/auth.php">
+               <?php endif; ?> 
+        <?php if(isset($_SESSION["error"])): ?>
+         <div class="alert alert-danger  text-dark" role="alert">
+                    <?php echo $_SESSION["error"]; 
+                      unset($_SESSION["error"]);
+                    ?>
+          
+            </div>
+               <?php endif; ?>   
+
+            <form action="login.php" method="post">
                 <div class="form-group">
                     <label class="form-label" for="username">Email</label>
-                    <input type="email" id="username" class="form-control" placeholder="Эл. адрес" name="email"value="">
+                    <input type="email" id="username" class="form-control" placeholder="Эл. адрес" value="" name="email">
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="password">Пароль</label>
-                    <input type="password" id="password" class="form-control" placeholder=""  name= "password">
+                    <input type="password" id="password" class="form-control" placeholder="" name="password">
                 </div>
                 <div class="form-group text-left">
                     <div class="custom-control custom-checkbox">
@@ -68,7 +79,7 @@ session_start();
     </div>
     <video poster="img/backgrounds/clouds.png" id="bgvid" playsinline autoplay muted loop>
         <source src="media/video/cc.webm" type="video/webm">
-        <source src="media/video/cc.mp4" type="video/mp4">
+        <source src="media/video/cc.mp4" type="video/mp4">  
     </video>
     <script src="js/vendors.bundle.js"></script>
 </body>
