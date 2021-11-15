@@ -11,6 +11,6 @@ if(!empty($user)){
 exit;
 }
 $_SESSION["success"] = "вы успешно прошли регистрацию";
-header("Location: /page_login.php");
 add_user($email,$password);
+header("Location: /page_login.php");
  ?>
