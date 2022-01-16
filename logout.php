@@ -1,6 +1,6 @@
 <?php 
 require_once "auth.php";
-logout();
+logout();    // Функция для удаления сессии и выход
 
 
 
