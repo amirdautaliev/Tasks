@@ -1,28 +1,28 @@
-<?php 
+<?php 	
 session_start();
-include "func.php";
-$email= $_POST["email"];
-$password = $_POST["password"];
-function redirect(){
-$header = header("Location: /page_login.php");
-}
+$email  = $_POST['email'];
+$password = $_POST['password'];
+require_once "function.php";
 
 function login($email,$password){
-	$user = check_user($email);
-	if(empty($user)) {
-	$_SESSION["error"]="Пароль или логин не правильно";
-	redirect($header);
-    exit;
+$user = check_user($email);
+if(empty($user)){
+$_SESSION['error'] = 'Вы ввели не правильно логин или пароль';
+header("Location: /page_login.php");
+exit;
 }
-if(!password_verify($password, $user["password"])){
-	$_SESSION["error"]="Пароль или логин не правильно";
-	redirect($header);
-     	exit;
-	}
+if(!password_verify($password, $user['password'])){
+$_SESSION['error'] = 'Вы ввели не правильно логин или пароль';
+header("Location: /page_login.php");
+exit;
 }
-	$_SESSION['user']['email'] = $user;
-	header("Location: /users.html");
-	login($email,$password);
+}
+$user = check_user($email);
+$_SESSION['user'] = $user;
+$_SESSION['role'] = $user['role'];
+$_SESSION['user_id']=$user['id'];
+$_SESSION['password'] = $password;
+header("Location: /users.php");
+login($email,$password);
 
- ?>
-
+ ?> 
