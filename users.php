@@ -41,7 +41,7 @@ login_require();
                 $statement->execute();
                 $people = $statement->fetchALL(PDO::FETCH_ASSOC);
                      ?>
-             
+
 
                     </li>
                 </ul>
@@ -89,13 +89,16 @@ login_require();
                                     <a href="javascript:void(0);" class="fs-xl text-truncate text-truncate-lg text-info" data-toggle="dropdown" aria-expanded="false">
                                         <?php echo $person['username']; ?>
                                           
-                                        <?php if($_SESSION['role']==2):?>
-                                           <i class="fal fas fa-cog fa-fw d-inline-block ml-1 fs-md"></i>
-                                           <i class="fal fa-angle-down d-inline-block ml-1 fs-md"></i>
-                                       <?php endif; ?>
-                                            
-                                       
-                                            
+                                        <?php if($_SESSION['role']==2) {
+                                         echo   '<i class="fal fas fa-cog fa-fw d-inline-block ml-1 fs-md" ></i>';
+                                         echo   '<i class="fal fa-angle-down d-inline-block ml-1 fs-md"></i>';
+                                        } 
+                                       elseif ($_SESSION['user_id']==$person['id']) {
+                                            echo '<i class="fal fas fa-cog fa-fw d-inline-block ml-1 fs-md" ></i>';
+                                         echo '<i class="fal fa-angle-down d-inline-block ml-1 fs-md"></i>';
+                                       }
+                                         ?>   
+                                          
                                           
                                   
                                     </a>
